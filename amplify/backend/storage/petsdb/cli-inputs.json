@@ -1,0 +1,14 @@
+{
+  "resourceName": "petsdb",
+  "tableName": "p",
+  "partitionKey": {
+    "fieldName": "ID",
+    "fieldType": "number"
+  },
+  "sortKey": {
+    "fieldName": "Date",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
