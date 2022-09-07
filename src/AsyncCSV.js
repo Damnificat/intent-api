@@ -66,7 +66,7 @@ class AsyncCSV extends Component {
         <input type="button" value="Obtenir Dades Facturació" onClick={this.downloadReport} />
         <CSVLink
 		  headers={headers}
-          filename={"Facturació_"+date+".csv"}
+          filename={"Facturació_ID"+this.idCerca+"_"+date+".csv"}
           data={data}
           ref={this.csvLinkEl}
         />
