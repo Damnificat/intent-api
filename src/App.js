@@ -12,6 +12,7 @@
 -POSSIBLES MILLORES:
   -La búsqueda és poc eficient perquè es realitza primer un scan de tota la DB i llavors es filtra, 
    teòricament podríem fer un query per ID i ja ens retornaria directament les dades de la DB que necessitem
+  -Potser no és necessari incloure el 'Type' en el .csv ja que tots seran 'Disp' 
 */
 import React, { useState } from "react";
 import "@aws-amplify/ui-react/styles.css";

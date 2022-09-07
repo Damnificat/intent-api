@@ -14,7 +14,7 @@ const date = `${year}_${month<10?`0${month}`:`${month}`}_${day<10?`0${day}`:`${d
 const headers = [
   { label: "ID", key: "ID" },
   { label: "Date", key: "Date" },
-  { label: "Type", key: "Disp" },
+  { label: "Type", key: "Type" },
   { label: "Concentrat", key: "Concentrat" }
 ];
 
