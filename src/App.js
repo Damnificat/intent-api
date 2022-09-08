@@ -11,10 +11,11 @@
 
 -POSSIBLES MILLORES:
   -La búsqueda és poc eficient perquè es realitza primer un scan de tota la DB i llavors es filtra, 
-   teòricament podríem fer un query per ID i ja ens retornaria directament les dades de la DB que necessitem
+   teòricament podríem fer un query per ID i ja ens retornaria directament les dades de la DB que necessitem.
+   Si seguim amb el Scan hem de tenir en compte per al cas real que només podem obtenir 1MB per crida.   
   -Potser no és necessari incloure el 'Type' en el .csv ja que tots seran 'Disp' 
 */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "@aws-amplify/ui-react/styles.css";
 import { API } from "aws-amplify";
 import { CSVLink } from "react-csv";
@@ -32,14 +33,15 @@ function App({ signOut }) {
   
   const [id, setId] = useState('');
   let dbFiltrada = []; 
-  
+
+
   async function obtenirEventsId() {
     console.log("Executant obtenirEventsId()");
     if(id == '') return;
     const idN = Number(id);
 	const dbScanned = await API.get('intentapi','/pets/ID'); 
 	//De API.get:(nom API, path) Path l'hem establert com a /pets, pero al estar a DDB afegim la Partition Key
-	console.log(idN);
+
 	dbFiltrada = dbScanned.filter(item => item.ID === idN && item.Type === 'Disp');
 	console.log(dbFiltrada);
   }
@@ -53,7 +55,6 @@ function App({ signOut }) {
 		  Introdueix ID d'una Màquina per a obtenir la informació de les seves dispensacions
 		  <AsyncCSV/>
 		</p>  
-	
 	  </header>
 	  <Button onClick={signOut}>Sign Out</Button>
     </View>
